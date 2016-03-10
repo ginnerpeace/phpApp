@@ -1,4 +1,7 @@
 <?php
+/**
+*¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿
+*/
 $channels = array(
     array('id'=>1,'name'=>"ÒÂ·þ",'parId'=>0),
     array('id'=>2,'name'=>"Êé¼®",'parId'=>0),
