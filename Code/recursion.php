@@ -1,36 +1,38 @@
 <?php
 /**
- * µİ¹éÊµÏÖÎŞÏŞ¼«·ÖÀà
+ * ä¸ªäººåšå®¢ï¼šè¿¹å¿†åšå®¢
+ * åšå®¢åœ°å€ï¼šwww.onmpw.com
+ * é€’å½’å®ç°æ— é™æåˆ†ç±»
  */
 $channels = array(
-    array('id'=>1,'name'=>"ÒÂ·ş",'parId'=>0),
-    array('id'=>2,'name'=>"Êé¼®",'parId'=>0),
-    array('id'=>3,'name'=>"TĞô",'parId'=>1),
-    array('id'=>4,'name'=>"¿ã×Ó",'parId'=>1),
-    array('id'=>5,'name'=>"Ğ¬×Ó",'parId'=>1),
-    array('id'=>6,'name'=>"Æ¤Ğ¬",'parId'=>5),
-    array('id'=>7,'name'=>"ÔË¶¯Ğ¬",'parId'=>5),
-    array('id'=>8,'name'=>"ÄÍ¿Ë",'parId'=>7),
-    array('id'=>9,'name'=>"ÄÍ¿Ë",'parId'=>3),
-    array('id'=>10,'name'=>"ºèĞÇ¶û¿Ë",'parId'=>7),
-    array('id'=>11,'name'=>"Ğ¡Ëµ",'parId'=>2),
-    array('id'=>12,'name'=>"¿Æ»ÃĞ¡Ëµ",'parId'=>11),
-    array('id'=>13,'name'=>"¹ÅµäÃûÖø",'parId'=>11),
-    array('id'=>14,'name'=>"ÎÄÑ§",'parId'=>2),
-    array('id'=>15,'name'=>"ËÄÊéÎå¾­",'parId'=>14)
+    array('id'=>1,'name'=>"è¡£æœ",'parId'=>0),
+    array('id'=>2,'name'=>"ä¹¦ç±",'parId'=>0),
+    array('id'=>3,'name'=>"Tæ¤",'parId'=>1),
+    array('id'=>4,'name'=>"è£¤å­",'parId'=>1),
+    array('id'=>5,'name'=>"é‹å­",'parId'=>1),
+    array('id'=>6,'name'=>"çš®é‹",'parId'=>5),
+    array('id'=>7,'name'=>"è¿åŠ¨é‹",'parId'=>5),
+    array('id'=>8,'name'=>"è€å…‹",'parId'=>7),
+    array('id'=>9,'name'=>"è€å…‹",'parId'=>3),
+    array('id'=>10,'name'=>"é¸¿æ˜Ÿå°”å…‹",'parId'=>7),
+    array('id'=>11,'name'=>"å°è¯´",'parId'=>2),
+    array('id'=>12,'name'=>"ç§‘å¹»å°è¯´",'parId'=>11),
+    array('id'=>13,'name'=>"å¤å…¸åè‘—",'parId'=>11),
+    array('id'=>14,'name'=>"æ–‡å­¦",'parId'=>2),
+    array('id'=>15,'name'=>"å››ä¹¦äº”ç»",'parId'=>14)
 );
 $html = array();
 
 /**
- * µİ¹é²éÕÒ¸¸idÎª$paridµÄ½áµã
- * @param array $html   °´ÕÕ¸¸-¡·×ÓµÄ½á¹¹´æ·Å²éÕÒ³öÀ´µÄ½áµã
- * @param int $parid    Ö¸¶¨µÄ¸¸id
- * @param array $channels   Êı¾İÊı×é
- * @param int $dep   ±éÀúµÄÉî¶È£¬³õÊ¼»¯Îª1
+ * é€’å½’æŸ¥æ‰¾çˆ¶idä¸º$paridçš„ç»“ç‚¹
+ * @param array $html   æŒ‰ç…§çˆ¶-ã€‹å­çš„ç»“æ„å­˜æ”¾æŸ¥æ‰¾å‡ºæ¥çš„ç»“ç‚¹
+ * @param int $parid    æŒ‡å®šçš„çˆ¶id
+ * @param array $channels   æ•°æ®æ•°ç»„
+ * @param int $dep   éå†çš„æ·±åº¦ï¼Œåˆå§‹åŒ–ä¸º1
  */
 function getChild(&$html,$parid,$channels,$dep){
     /*
-     * ±éÀúÊı¾İ£¬²éÕÒparIdÎª²ÎÊı$paridÖ¸¶¨µÄid
+     * éå†æ•°æ®ï¼ŒæŸ¥æ‰¾parIdä¸ºå‚æ•°$paridæŒ‡å®šçš„id
      */
     for($i = 0;$i<count($channels);$i++){
         if($channels[$i]['parId'] == $parid){
