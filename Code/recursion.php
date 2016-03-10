@@ -40,7 +40,4 @@ function getChild(&$html,$parid,$channels,$dep){
     }
 }
 getChild($html,0,$channels,1);
-echo "<pre>";
-print_r($html);
-
 ?>
