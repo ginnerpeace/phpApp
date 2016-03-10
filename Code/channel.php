@@ -1,52 +1,52 @@
 <?php
 /**
-*�����������������
+*使用非递归，即使用栈的方式实现栏目的无限极分类查询
 */
 $channels = array(
-    array('id'=>1,'name'=>"�·�",'parId'=>0),
-    array('id'=>2,'name'=>"�鼮",'parId'=>0),
-    array('id'=>3,'name'=>"T��",'parId'=>1),
-    array('id'=>4,'name'=>"����",'parId'=>1),
-    array('id'=>5,'name'=>"Ь��",'parId'=>1),
-    array('id'=>6,'name'=>"ƤЬ",'parId'=>5),
-    array('id'=>7,'name'=>"�˶�Ь",'parId'=>5),
-    array('id'=>8,'name'=>"�Ϳ�",'parId'=>7),
-    array('id'=>9,'name'=>"�Ϳ�",'parId'=>3),
-    array('id'=>10,'name'=>"���Ƕ���",'parId'=>7),
-    array('id'=>11,'name'=>"С˵",'parId'=>2),
-    array('id'=>12,'name'=>"�ƻ�С˵",'parId'=>11),
-    array('id'=>13,'name'=>"�ŵ�����",'parId'=>11),
-    array('id'=>14,'name'=>"��ѧ",'parId'=>2),
-    array('id'=>15,'name'=>"�����徭",'parId'=>14)
+    array('id'=>1,'name'=>"衣服",'parId'=>0),
+    array('id'=>2,'name'=>"书籍",'parId'=>0),
+    array('id'=>3,'name'=>"T恤",'parId'=>1),
+    array('id'=>4,'name'=>"裤子",'parId'=>1),
+    array('id'=>5,'name'=>"鞋子",'parId'=>1),
+    array('id'=>6,'name'=>"皮鞋",'parId'=>5),
+    array('id'=>7,'name'=>"运动鞋",'parId'=>5),
+    array('id'=>8,'name'=>"耐克",'parId'=>7),
+    array('id'=>9,'name'=>"耐克",'parId'=>3),
+    array('id'=>10,'name'=>"鸿星尔克",'parId'=>7),
+    array('id'=>11,'name'=>"小说",'parId'=>2),
+    array('id'=>12,'name'=>"科幻小说",'parId'=>11),
+    array('id'=>13,'name'=>"古典名著",'parId'=>11),
+    array('id'=>14,'name'=>"文学",'parId'=>2),
+    array('id'=>15,'name'=>"四书五经",'parId'=>14)
 );
-$stack = array();  //����һ����ջ
-$html = array();   //�������������Ŀ֮��Ĺ�ϵ�Լ�����Ŀ�����
+$stack = array();  //定义一个空栈
+$html = array();   //用来保存各个栏目之间的关系以及该栏目的深度
 /*
- * �Զ�����ջ����
+ * 自定义入栈函数
  */
 function pushStack(&$stack,$channel,$dep){
     array_push($stack, array('channel'=>$channel,'dep'=>$dep));
 }
 /*
- * �Զ����ջ����
+ * 自定义出栈函数
  */
 function popStack(&$stack){
     return array_pop($stack);
 }
 /*
- * ���Ƚ�������Ŀѹ��ջ��
+ * 首先将顶级栏目压入栈中
  */
 foreach($channels as $key=>$val){
     if($val['parId'] == 0)
         pushStack($stack,$val,0);
 }
 /*
- * ��ջ�е�Ԫ�س�ջ������������Ŀ
+ * 将栈中的元素出栈，查找其子栏目
  */
 do{
-    $par = popStack($stack); //��ջ��Ԫ�س�ջ
+    $par = popStack($stack); //将栈顶元素出栈
     /*
-     * �����Դ���ĿΪ������Ŀ��id������Щ��Ŀ��ջ
+     * 查找以此栏目为父级栏目的id，将这些栏目入栈
      */
     for($i=0;$i<count($channels);$i++){
         if($channels[$i]['parId'] == $par['channel']['id']){
@@ -54,7 +54,7 @@ do{
         }
     }
     /*
-     * ����ջ����Ŀ�Լ�����Ŀ����ȱ��浽������
+     * 将出栈的栏目以及该栏目的深度保存到数组中
      */
     $html[] = array('id'=>$par['channel']['id'],'name'=>$par['channel']['name'],'dep'=>$par['dep']);
 }while(count($stack)>0);
