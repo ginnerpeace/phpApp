@@ -7,11 +7,11 @@ PHP经典小应用——无限极分类<br />
 3、删除一个栏目，这时应该级联删除其子栏目<br />
 4、移动一个栏目<br />
 5、展示栏目，这是里面的核心功能——主要是展示各级栏目之间的关系<br />
-    在我个人的迹忆博客中有对查询的实现原理的简单介绍，网址：http://www.onmpw.com/tm/xwzj/prolan_90.html
+    在我个人的迹忆博客中有对查询的实现原理的简单介绍，网址：http://www.onmpw.com/tm/xwzj/prolan_90.html <br />
 全部代码在code文件夹中<br />
-当前只有查询功能，接下来会继续补充后续功能
-opChannel类的使用说明：
-首先由这样几个配置项
+当前只有查询功能，接下来会继续补充后续功能<br />
+opChannel类的使用说明：<br />
+首先由这样几个配置项 <br />
 $config = array(
 
 	'requestField'=>array(), //此项表示返回我们需要在返回结果中返回的字段
@@ -21,11 +21,11 @@ $config = array(
 	'isReturnDep' =>1	//是否返回深度，1 表示返回     0 表示不返回
 
 )
-使用举例：
+使用举例：<br />
 $config = array(
 	'requestField'	=> array('id','name'),
 	'queryType'	=> 1, //这里使用非递归的方式
-);
+);<br />
 $channels = array(
     array('id'=>1,'name'=>"衣服",'parId'=>0),
     array('id'=>2,'name'=>"书籍",'parId'=>0),
@@ -42,7 +42,7 @@ $channels = array(
     array('id'=>13,'name'=>"古典名著",'parId'=>11),
     array('id'=>14,'name'=>"文学",'parId'=>2),
     array('id'=>15,'name'=>"四书五经",'parId'=>14)
-);
-$obj = new operaChannel($config);
-$obj->setData($channels)->start();
-$res = $obj->getResult();
+);<br />
+$obj = new operaChannel($config);<br />
+$obj->setData($channels)->start();<br />
+$res = $obj->getResult();<br />
