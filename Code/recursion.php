@@ -2,7 +2,7 @@
 /**
  * 个人博客：迹忆博客
  * 博客地址：www.onmpw.com
- * 递归实现无限极分类
+ * 递归实现无限级分类
  */
 $channels = array(
     array('id'=>1,'name'=>"衣服",'parId'=>0),
