@@ -34,6 +34,7 @@ $config = array(
 	'isReturnDep' =>1	//是否返回深度，1 表示返回     0 表示不返回
 
 )
+
 使用举例：
 
 $channels = array(
@@ -55,6 +56,7 @@ $channels = array(
     array('id'=>15,'name'=>"四书五经",'parId'=>14)
     
 );
+
 $config = array(
 
     'requestField'=>array('id','name'),
