@@ -3,27 +3,27 @@
 该类采用单例设计模式，保证了该类实例对象的唯一性
 实现方式
 
-public static $_instance; //静态属性，存储实例对象
+	public static $_instance; //静态属性，存储实例对象
 
 /**
   私有化构造函数 这是构造单例设计模式必须的一步
 */
 
-private function __construct($config=''){
-     $this->config = $this->parseConfig($config);
-}
+	private function __construct($config=''){
+	     $this->config = $this->parseConfig($config);
+	}
 
 /**
   实例化对象 采用静态公共方法
 */
 
-public static function Instance(){
-	if(self::$_instance instanceof self){
-	     return self::$_instance;
+	public static function Instance(){
+		if(self::$_instance instanceof self){
+		     return self::$_instance;
+		}
+		self::$_instance = new self;
+		return self::$_instance;
 	}
-	self::$_instance = new self;
-	return self::$_instance;
-}
 
 2.功能介绍
 
@@ -89,7 +89,7 @@ public static function Instance(){
     
 使用该类需要先实例化该类的对象
     
-$obj = Db::Instance();
+    $obj = Db::Instance();
     
 2) 查找数据
     
@@ -99,7 +99,7 @@ select()函数查找多条数据
     
 使用实例
     
-$res = $obj->field('id,name')->where('id > 10')->select();
+    $res = $obj->field('id,name')->where('id > 10')->select();
     
 返回值：
     
@@ -112,7 +112,7 @@ $res = $obj->field('id,name')->where('id > 10')->select();
 	
 find()是返回一条数据
     
-$res = $obj->field('id,name')->where('id=10')->find()
+    $res = $obj->field('id,name')->where('id=10')->find()
     
 返回值
     
@@ -124,13 +124,13 @@ $res = $obj->field('id,name')->where('id=10')->find()
     
 添加数据有两个函数 add($data,$options) 和addMore($data,$options)
     
-add($data.$options)
+    add($data.$options)
     
 $data  要添加的数据
     
 数据格式
     
-array('id'=>13,'name'=>'onmpw')
+    array('id'=>13,'name'=>'onmpw')
     
 $options 可选参数
     
@@ -140,7 +140,7 @@ $options 可选参数
     
 插入失败 返回 false  插入成功 返回插入的条数
     
-addMore($data,$options)
+    addMore($data,$options)
     
 可以通过$options选项指定是夺标插入还是单表插入
     
@@ -201,13 +201,13 @@ $options 可以指定表名
     
 实例
     
-$res = $obj->table('repl')->where('id=10')->delete(); //删除repl表下id=10的记录
+    $res = $obj->table('repl')->where('id=10')->delete(); //删除repl表下id=10的记录
     
-$res = $obj->table('repl')->where('id=13')->delete(array('table'=>'test'));  //删除test表下id=13的记录
+    $res = $obj->table('repl')->where('id=13')->delete(array('table'=>'test'));  //删除test表下id=13的记录
     
 等价于
     
-$res = $obj->where('id=13')->delete(array('table'=>'test'))
+    $res = $obj->where('id=13')->delete(array('table'=>'test'))
     
 返回值
     
@@ -215,7 +215,7 @@ $res = $obj->where('id=13')->delete(array('table'=>'test'))
     
 6) table($str) 函数  指定表名
     
-$obj->table('test')  //指定当前操作的表为test表
+    $obj->table('test')  //指定当前操作的表为test表
     
 返回值为 当前对象  object
     
@@ -225,17 +225,17 @@ $where 可以是字符串也可以是数组
     
 字符串
     
-$obj->table('test')->where("name='迹忆博客',url='www.onmpw.com'");
+    $obj->table('test')->where("name='迹忆博客',url='www.onmpw.com'");
     
 数组
     
-$obj->table('test')->where(array('name'=>'迹忆博客','url'=>'www.onmpw.com'))
+    $obj->table('test')->where(array('name'=>'迹忆博客','url'=>'www.onmpw.com'))
     
 返回值为 当前对象  object
     
 8）field($field) 指定查询的字段名称
     
-$obj->table('test')->field('name,url')->select();
+    $obj->table('test')->field('name,url')->select();
     
 如果在查询的时候不适用field()函数指定字段，默认会查询该表的所有字段
     
@@ -243,11 +243,11 @@ $obj->table('test')->field('name,url')->select();
     
 9) orderby($str)  指定按照那个字段排序
     
-$obj->table('test')->field('id,name,url')->where("name='迹忆博客'")->orderby('id DESC')->select();
+    $obj->table('test')->field('id,name,url')->where("name='迹忆博客'")->orderby('id DESC')->select();
     
 按照id 降序排列
     
-$obj->table('test')->field('id,name,url')->where("name='迹忆博客'")->orderby('id')->select();
+    $obj->table('test')->field('id,name,url')->where("name='迹忆博客'")->orderby('id')->select();
     
 也可以不指定是降序或者升序
     
@@ -259,7 +259,7 @@ $limt 可以为字符串也可以为数组
     
 数组
     
-array(page,listrows)
+    array(page,listrows)
     
 page 指定当前的页数   listrows指定每页取出的条数
     
@@ -269,15 +269,15 @@ page 指定当前的页数   listrows指定每页取出的条数
     
 10表示从第十条记录开始取，12表示取出的条数
     
-$res = $obj->table('test')->field('id,name,url')->where("name='迹忆博客'")->orderby('id DESC')->limit('10,12')->select()
+    $res = $obj->table('test')->field('id,name,url')->where("name='迹忆博客'")->orderby('id DESC')->limit('10,12')->select()
     
 返回值为 当前对象 object
     
 11）sql($sql)  执行指定的sql语句
     
-$sql = "select name,url from test where name='迹忆博客'";
+    $sql = "select name,url from test where name='迹忆博客'";
     
-$res = $obj->sql($sql);
+    $res = $obj->sql($sql);
     
 返回执行的结果
 
