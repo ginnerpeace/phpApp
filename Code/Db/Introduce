@@ -1,0 +1,68 @@
+# Db类的介绍
+1.采用单例设计模式
+该类采用单例设计模式，保证了该类实例对象的唯一性
+实现方式
+public static $_instance; //静态属性，存储实例对象
+/*
+* 私有化构造函数 这是构造单例设计模式必须的一步
+*/
+private function __construct($config=''){
+     $this->config = $this->parseConfig($config);
+}
+/**
+* 实例化对象 采用静态公共方法
+*/
+public static function Instance(){
+	if(self::$_instance instanceof self){
+	     return self::$_instance;
+	}
+	self::$_instance = new self;
+	return self::$_instance;
+}
+2.功能介绍
+首先该类支持主从复制数据库的连接，支持一主多从模式的数据库
+当线程正在连接的一台从服务器宕机时，程序会自动重新连接其他正常的从服务器
+其次当新增数据到数据表中时，该类支持一次添加多条数据，并且这多条数据可以是不同的表
+可以通过addMore函数的第二个参数来指明是多表插入，其实现核心代码如下
+/**
+     * 一次性插入多条数据，支持不同表的插入
+          * 当使用多表插入功能时需要在第二个参数中指定 $options['multitable'] = true
+	       * 并且$data的格式为
+	            * array(
+		         *  '表名1'=>array(array(),array()),
+			      *  '表名2'=>array(array(),array())
+			           * )
+				        * @param array $data
+					     * @param array $options
+					          * @return boolean
+						       */
+						           public function addMore($data = array(),$options = array()){
+							           if(isset($options['table']))
+								               $this->table($options['table']);
+									               if(!is_array($data)) return false;
+										               /*
+											                * 开启事务处理多条语句
+													         */
+														         $this->startTransaction();
+															         foreach($data as $key=>$val){
+																             //查看是否是多表插入
+																	                 if(isset($options['multitable'])&&$options['multitable']){
+																			                 /*
+																					                  * 多表插入，则$key为表名,$val为要插入的数据
+																							                   * 使用递归的方式再次对多条数据进行插入
+																									                    */
+																											                    $res = $this->addMore($val,array('table'=>$key));
+																													                }else{
+																															                //单表插入
+																																	                $res = $this->add($val);
+																																			            }
+																																				                if(!$res){  
+																																						                //如果有一条数据插入失败，则回滚事务，撤销所有的操作
+																																								                $this->rollback();
+																																										                return false;
+																																												            }
+																																													            }
+																																														            //如果所有插入操作无误，则提交事务
+																																															            $this->commit();
+																																																            return true;
+																																																	        }
