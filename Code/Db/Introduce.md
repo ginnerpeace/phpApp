@@ -152,8 +152,16 @@ addMore($data,$options)
 ```Php     
 'multitable'=>true   多表插入  如果设定此项则默认是单表插入  多表插入$data的数据格式
 $data = array(
-   'tablename1'=>array(	array('id'=>20,'name'=>'迹忆博客1'),array('id'=>21,'name'=>'迹忆博客2'),array('id'=>22,'name'=>'迹忆博客3')),
-   'tablename2'=>array(	array('id'=>20,'name'=>'迹忆博客1','url'=>'www.onmpw.com'),array('id'=>21,'name'=>'迹忆博客2','url'=>'www.onmpw.com'),array('id'=>22,'name'=>'迹忆博客3','url'=>'www.onmpw.com'))
+   'tablename1'=>array(	
+   	array('id'=>20,'name'=>'迹忆博客1'),
+   	array('id'=>21,'name'=>'迹忆博客2'),
+   	array('id'=>22,'name'=>'迹忆博客3')
+   ),
+   'tablename2'=>array(	
+   	array('id'=>20,'name'=>'迹忆博客1','url'=>'www.onmpw.com'),
+   	array('id'=>21,'name'=>'迹忆博客2','url'=>'www.onmpw.com'),
+   	array('id'=>22,'name'=>'迹忆博客3','url'=>'www.onmpw.com')
+   )
 )
 ```
 ```Php  
