@@ -1,3 +1,4 @@
+项目由 [迹忆博客](http://www.onmpw.com) 提供
 # phpApp
 PHP经典小应用——无限级分类
 
@@ -24,21 +25,18 @@ PHP经典小应用——无限级分类
 opChannel类的使用说明：
 
 首先由这样几个配置项
-
+```Php
 $config = array(
-
 	'requestField'=>array(), //此项表示返回我们需要在返回结果中返回的字段
 	'queryType'=>1 , 	//此项表示使用查询的方法，1 表示使用非递归的方式   2 表示使用递归的方式
 	'parFieldname'=>''      //表中表示父id的字段名称
 	'idFieldname' =>'' 	//表中主键的字段名，在mysql数据库中一般名称为id，但是也有特殊情况，特殊情况下就需要我们指定其名称
 	'isReturnDep' =>1	//是否返回深度，1 表示返回     0 表示不返回
-
 )
-
+```
 使用举例：
-
+```Php
 $channels = array(
-
     array('id'=>1,'name'=>"衣服",'parId'=>0),
     array('id'=>2,'name'=>"书籍",'parId'=>0),
     array('id'=>3,'name'=>"T恤",'parId'=>1),
@@ -54,18 +52,12 @@ $channels = array(
     array('id'=>13,'name'=>"古典名著",'parId'=>11),
     array('id'=>14,'name'=>"文学",'parId'=>2),
     array('id'=>15,'name'=>"四书五经",'parId'=>14)
-    
 );
-
 $config = array(
-
     'requestField'=>array('id','name'),
     'queryType'=>1,   //这里使用非递归的方式
-    
 );
-
 $obj = new operaChannel($config);
-
 $obj->setData($channels)->start();
-
 $html = $obj->getResult();
+```
