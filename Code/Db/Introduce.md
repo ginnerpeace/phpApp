@@ -7,18 +7,15 @@
 public static $_instance; //静态属性，存储实例对象
 ```
 ```Php
-
-/*
+/**
  * 私有化构造函数 这是构造单例设计模式必须的一步
  */
 private function __construct($config=''){
 	$this->config = $this->parseConfig($config);
 }
-
 ```
 ```Php
-
-/*
+/**
  * 实例化对象 采用静态公共方法
  */
 public static function Instance(){
@@ -28,7 +25,6 @@ public static function Instance(){
 	self::$_instance = new self;
 	return self::$_instance;
 }
-
 ```
 
 2.功能介绍
