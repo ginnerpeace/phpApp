@@ -120,7 +120,7 @@ $res = $obj->field('id,name')->where('id=10')->find()
     
 查找失败 返回 false  查找成功 返回一条数据
 ```Php     
-array('id'=>10,'name'=>'迹忆博客')
+array('id'=>10,'name'=>'[迹忆博客](http://www.onmpw.com)')
 ```    
 3）添加数据
     
