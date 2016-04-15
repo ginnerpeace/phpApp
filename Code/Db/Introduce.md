@@ -50,15 +50,15 @@ public static function Instance(){
  * @param array $options
  * @return boolean
  */
-    public function addMore($data = array(),$options = array()){
-        if(isset($options['table']))
-            $this->table($options['table']);
-        if(!is_array($data)) return false;
-        /*
-         * 开启事务处理多条语句
-         */
-        $this->startTransaction();
-        foreach($data as $key=>$val){
+ public function addMore($data = array(),$options = array()){
+       if(isset($options['table']))
+           $this->table($options['table']);
+       if(!is_array($data)) return false;
+       /*
+        * 开启事务处理多条语句
+        */
+       $this->startTransaction();
+       foreach($data as $key=>$val){
             //查看是否是多表插入
             if(isset($options['multitable'])&&$options['multitable']){
                 /*
@@ -75,11 +75,11 @@ public static function Instance(){
                 $this->rollback();
                 return false;
             }
-        }
-        //如果所有插入操作无误，则提交事务
-        $this->commit();
-        return true;
-    }
+       }
+       //如果所有插入操作无误，则提交事务
+       $this->commit();
+       return true;
+}
 ```
 同时支持事务处理，当多条插入数据之中的一条数据插入失败，可通过事务回滚撤销其它插入的数据
     
@@ -181,10 +181,7 @@ $data = array(
     
 $data 要修改的数据，格式为
 ```Php      
-    array(
-    	'name'=>'onmpw',
-	'url'=>'http://onmpw.com'
-    );
+array('name'=>'onmpw','url'=>'http://onmpw.com');
 ```    
 $options 可以指定表名
     
@@ -202,13 +199,13 @@ $options 可以指定表名
     
 实例
 ```Php      
-    $res = $obj->table('repl')->where('id=10')->delete(); //删除repl表下id=10的记录
+$res = $obj->table('repl')->where('id=10')->delete(); //删除repl表下id=10的记录
     
-    $res = $obj->table('repl')->where('id=13')->delete(array('table'=>'test'));  //删除test表下id=13的记录
+$res = $obj->table('repl')->where('id=13')->delete(array('table'=>'test'));  //删除test表下id=13的记录
 ```    
 等价于
 ```Php      
-    $res = $obj->where('id=13')->delete(array('table'=>'test'))
+$res = $obj->where('id=13')->delete(array('table'=>'test'))
 ```    
 返回值
     
@@ -216,7 +213,7 @@ $options 可以指定表名
     
 6) table($str) 函数  指定表名
 ```Php      
-    $obj->table('test')  //指定当前操作的表为test表
+$obj->table('test')  //指定当前操作的表为test表
 ```    
 返回值为 当前对象  object
     
@@ -226,17 +223,17 @@ $where 可以是字符串也可以是数组
     
 字符串
 ```Php      
-    $obj->table('test')->where("name='迹忆博客',url='www.onmpw.com'");
+$obj->table('test')->where("name='迹忆博客',url='www.onmpw.com'");
 ```    
 数组
 ```Php      
-    $obj->table('test')->where(array('name'=>'迹忆博客','url'=>'www.onmpw.com'))
+$obj->table('test')->where(array('name'=>'迹忆博客','url'=>'www.onmpw.com'))
 ```    
 返回值为 当前对象  object
     
 8）field($field) 指定查询的字段名称
 ```Php      
-    $obj->table('test')->field('name,url')->select();
+$obj->table('test')->field('name,url')->select();
 ```    
 如果在查询的时候不适用field()函数指定字段，默认会查询该表的所有字段
     
@@ -244,11 +241,11 @@ $where 可以是字符串也可以是数组
     
 9) orderby($str)  指定按照那个字段排序
 ```Php      
-    $obj->table('test')->field('id,name,url')->where("name='迹忆博客'")->orderby('id DESC')->select();
+$obj->table('test')->field('id,name,url')->where("name='迹忆博客'")->orderby('id DESC')->select();
 ```    
 按照id 降序排列
 ```Php      
-    $obj->table('test')->field('id,name,url')->where("name='迹忆博客'")->orderby('id')->select();
+$obj->table('test')->field('id,name,url')->where("name='迹忆博客'")->orderby('id')->select();
 ```    
 也可以不指定是降序或者升序
     
@@ -260,7 +257,7 @@ $limt 可以为字符串也可以为数组
     
 数组
 ```Php      
-    array(page,listrows)
+array(page,listrows)
 ```    
 page 指定当前的页数   listrows指定每页取出的条数
     
@@ -270,15 +267,15 @@ page 指定当前的页数   listrows指定每页取出的条数
     
 10表示从第十条记录开始取，12表示取出的条数
 ```Php      
-    $res = $obj->table('test')->field('id,name,url')->where("name='迹忆博客'")->orderby('id DESC')->limit('10,12')->select()
+$res = $obj->table('test')->field('id,name,url')->where("name='迹忆博客'")->orderby('id DESC')->limit('10,12')->select()
 ```    
 返回值为 当前对象 object
     
 11）sql($sql)  执行指定的sql语句
  ```Php     
-    $sql = "select name,url from test where name='迹忆博客'";
+$sql = "select name,url from test where name='迹忆博客'";
     
-    $res = $obj->sql($sql);
+$res = $obj->sql($sql);
 ```    
 返回执行的结果
 
