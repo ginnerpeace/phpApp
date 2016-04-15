@@ -1,3 +1,4 @@
+数据库操作类是由 [迹忆博客](http://www.onmpw.com) 提供
 # Db类的介绍
 1.采用单例设计模式
 该类采用单例设计模式，保证了该类实例对象的唯一性
@@ -120,7 +121,7 @@ $res = $obj->field('id,name')->where('id=10')->find()
     
 查找失败 返回 false  查找成功 返回一条数据
 ```Php     
-array('id'=>10,'name'=>['迹忆博客'](http://www.onmpw.com))
+array('id'=>10,'name'=>'迹忆博客')
 ```    
 3）添加数据
     
