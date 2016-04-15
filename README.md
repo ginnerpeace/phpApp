@@ -16,7 +16,7 @@ PHP经典小应用——无限级分类
 
 5、展示栏目，这是里面的核心功能——主要是展示各级栏目之间的关系
 
-在我个人的迹忆博客中有对查询的实现原理的简单介绍，网址：http://www.onmpw.com/tm/xwzj/prolan_90.html
+在我个人的迹忆博客中有对查询的实现原理的简单介绍，网址：[http://www.onmpw.com/tm/xwzj/prolan_90.html](http://www.onmpw.com/tm/xwzj/prolan_90.html)
 
 全部代码在code文件夹中
 
