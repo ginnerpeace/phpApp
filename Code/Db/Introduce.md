@@ -147,7 +147,7 @@ addMore($data,$options)
 ```   
 可以通过$options选项指定是夺标插入还是单表插入
 ```Php     
-'multitable'=>true   多表插入  如果设定此项则默认是单表插入  多表插入$data的数据格式
+'multitable'=>true   多表插入  如果不设定此项则默认是单表插入  多表插入$data的数据格式
 $data = array(
    'tablename1'=>array(	
    	array('id'=>20,'name'=>'迹忆博客1'),
