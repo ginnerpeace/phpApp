@@ -1,7 +1,7 @@
 <?php
 //namespace lib\Db;
 class Db{
-    /* protected $config = array(
+    protected $config = array(
         'dsn'=>'',
         'type'=>'mysql',
         'host'=>'192.168.144.128,192.168.144.131',
@@ -13,20 +13,8 @@ class Db{
         'master_num'=>1,    //主服务器的数量
         'deploy_type'=>1,   //数据库部署方式，1 表示主从分离   0 表示单一服务器
         'rw_seprate'=>true,    //读写是否分离
-    ); */
-    protected $config = array(
-        'dsn'=>'',
-        'type'=>'mysql',
-        'host'=>'qdm130083113.my3w.com',
-        'dbname'=>'qdm130083113_db',
-        'port'=>'3306',
-        'username'=>'qdm130083113',
-        'password'=>'djz082818',
-        'slave_no'=>'2',    //指定从服务器来进行读操作
-        'master_num'=>1,    //主服务器的数量
-        'deploy_type'=>0,   //数据库部署方式，1 表示主从分离   0 表示单一服务器
-        'rw_seprate'=>false,    //读写是否分离
     );
+    
     public static $_instance; //静态属性，存储实例对象
     
     protected $_links = array();  //存储连接标识符
