@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta content="迹忆,个人博客,迹忆博客,无限极栏目,Javascript,Jquery,树结构" name="keywords">
+	<meta content="迹忆博客，个人作品展示，使用Javascript，html和PHP实现了无限极栏目的操作，同时可以作为实现树结构的参考。" name="description">
+    <meta charset="UTF-8">
+    <title>迹忆博客——无限级栏目操作</title>
+    <link rel="stylesheet" href="./Css/style.css" />
+</head>
+<body>
+<nav class="nav">
+	<ul>
+		<li><a href="/">首页</a></li>
+		<li><a href="/tm/xwzj">学无止境</a></li>
+		<li><a href="/tm/qwzt">趣味杂谈</a></li>
+		<li><a href="/tm/zj">足迹</a></li>
+		<li><a href="/tm/works">作品</a></li>
+		<li><a href="/tm/aboutus">关于我们</a></li>
+		<li><a href="/tm/liuyan">留言</a></li>
+	</ul>
+</nav>
+<div class="title">
+    <p><a href="http://www.onmpw.com" target="_blank">迹忆博客</a>——无限级栏目分类</p>
+</div>
+<div class="content">
+	<div class="addtop">
+        <span>增加顶级栏目</span>
+    </div>
+    <table class="table" cellpadding="0" cellspacing="0">
+        <tr class="channel_title">
+            <th class="checkbox"><input type="checkbox" name="checkbox" /> </th>
+            <th class="typeid">id</th>
+            <th>栏目名称</th>
+            <th class="typeoperate">操作</th>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript" src="./Js/jquery.min.js"></script>
+<script type="text/javascript" src="./Js/common.js"></script>
+<script type="text/javascript">
+
+(function(){
+
+    var bp = document.createElement('script');
+
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+
+    var s = document.getElementsByTagName("script")[0];
+
+    s.parentNode.insertBefore(bp, s);
+
+})();
+
+</script>
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?4a24e9fb4d76cb5d3b7124de90c58d46";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
+</html>

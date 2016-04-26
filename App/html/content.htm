@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="keywords" content="{dede:field.keywords/}" />
+<meta name="description" content="{dede:field name='description' function='html2text(@me)'/}" />
+<title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
+<link rel="shortcut icon" href="{dede:global.cfg_templets_skin/}/img/icon.ico" />
+<link rel="stylesheet" href="{dede:global.cfg_templets_skin/}/css/global.css" />
+<link rel="stylesheet" href="{dede:global.cfg_templets_skin/}/css/style.css" />
+<link rel="stylesheet" href="{dede:global.cfg_templets_skin/}/font/iconfont.css" />
+	<link type="text/css" rel="stylesheet" href="http://static.duoshuo.com/styles/embed.default.css?79dc948b.css" />
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/js/jquery.min_v1.0.js"></script>
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/js/common.js"></script>
+<script type="text/javascript" src="{dede:global.cfg_templets_skin/}/js/ltie9.js"></script>
+</head>
+<body>
+{dede:include filename="head.htm"/}
+<!-- 内容开始 -->
+<section>
+	<!-- 文章 -->
+	<article>
+		<div class="art-left detail-txt">
+			<div class="curr-pos">
+				当前位置： {dede:field name='position'/} 文章
+			</div>
+			<h1>{dede:field.title/}</h1>
+			<div class="txt-infr">
+				<!--<em class="iconfont">&#xe609;</em>-->
+				<em class="font">发布时间：</em>
+				<span>{dede:field.pubdate function="MyDate('Y-m-d',@me)"/}</span>
+				<!--<em class="iconfont">&#xe607;</em>-->
+				<em class="font">作者：</em>
+				<span>{dede:field.writer/}</span>
+				<em class="font">浏览次数：</em>
+				<!--<em class="iconfont">&#xe60a;</em>-->
+				<span class="count"></span>
+			</div>
+			<div class="graf-box">
+				{dede:field.body/}
+			</div>
+			<div class="pre-next">
+				<p>{dede:prenext get='pre'/}</p>
+				<p>{dede:prenext get='next'/}</p>
+			</div>
+			<div class="blank15"></div>
+			<div class="pre-next">
+				<p>除非注明转载，本站文章均为原创，欢迎转载，转载请以链接形式注明出处</p>
+				<p class="arcurl">本文地址：<a href=""></a></p>
+			</div>
+			<!--<div class="blank15"></div>
+			<div class="actbox">
+				<ul>
+					<li id="act-fav"><a href="{dede:field name='phpurl'/}/stow.php?aid={dede:field.id/}" target="_blank">收藏</a></li>
+					<li id="act-err"><a href="{dede:field name='phpurl'/}/erraddsave.php?aid={dede:field.id/}&title={dede:field.title/}" target="_blank">挑错</a></li>
+					<li id="act-pus"><a href="{dede:field name='phpurl'/}/recommend.php?aid={dede:field.id/}" target="_blank">推荐</a></li>
+				</ul>
+			</div>-->
+			<div class="blank15"></div>
+			<div class="dashed-border"></div>
+			<script>document.write(unescape('%3Cdiv id="hm_t_90415"%3E%3C/div%3E%3Cscript charset="utf-8" src="http://crs.baidu.com/t.js?siteId=4a24e9fb4d76cb5d3b7124de90c58d46&planId=90415&async=0&referer=') + encodeURIComponent(document.referrer) + '&title=' + encodeURIComponent(document.title) + '&rnd=' + (+new Date) + unescape('"%3E%3C/script%3E'));</script>
+			<div class="dashed-border"></div>
+			{dede:include file='ajaxfeedback.htm' /}
+		</div>
+		<aside  class="right-box">
+			<form  name="formsearch" action="{dede:global.cfg_cmsurl/}/plus/search.php" target="_blank">
+				<div class="search-box">
+					<input type="hidden" name="kwtype" value="0" />
+					<input name="q" type="text" id="search-keyword"  placeholder="请输入搜索内容">
+					<button type="submit" class="search-btn">搜索</button>
+				</div>
+			</form>
+			<div class="art mt20">
+				<h2 class="art-txt no-line">
+					<em class="iconfont c-f26868">&#xe608;</em>
+					<span>栏目导航</span>
+				</h2>
+				<ul class="column">
+					{dede:channel type='son' currentstyle="
+					<li><a href='~typelink~' class='current'>~typename~</a></li>
+					"}
+					<li><a href='[field:typeurl/]'>[field:typename/]</a></li>
+					{/dede:channel}
+				</ul>
+			</div>
+			<div class="art mt20">
+				<h2 class="art-txt">
+					<em class="iconfont c-f26868">&#xe606;</em>
+					<span>最新文章</span>
+				</h2>
+				<ul class="art-list">
+					{dede:arclist row='9' titlelen='56' orderby='pubdate'}
+					<li>
+						<a href="[field:arcurl/]">
+							<em class="iconfont c-f26868"> &#xe60f; </em>
+							<span>[field:title/]</span>
+						</a>
+					</li>
+					{/dede:arclist}
+				</ul>
+			</div>
+			<div class="art mt20">
+				<h2 class="art-txt">
+					<em class="iconfont c-f26868">&#xe605;</em>
+					<span>热门文章</span>
+				</h2>
+				<ul class="art-list">
+					{dede:arclist row='9' titlelen='56' orderby='hot'}
+					<li>
+						<a href="[field:arcurl/]">
+							<em class="iconfont c-f26868"> &#xe60f; </em>
+							<span>[field:title/]</span>
+						</a>
+					</li>
+					{/dede:arclist}
+				</ul>
+			</div>
+			<div class="art mt20">
+				<h2 class="art-txt">
+					<em class="iconfont c-f26868">&#xe600;</em>
+					<span>热门标签</span>
+				</h2>
+				<div class="of-h">
+					{dede:tag row='100' sort='new'}
+					<a class="btn label" href="[field:link/]">[field:tag /]</a>
+					{/dede:tag}
+				</div>
+				<div class="share mt20">
+					<div class="bdsharebuttonbox" data-tag="share_1">
+						<a class="bds_baidu" data-cmd="baidu"></a>
+						<a class="bds_more" data-cmd="more"></a>
+						<a class="bds_tqq" data-cmd="tqq"></a>
+						<a class="bds_qzone" data-cmd="qzone"></a>
+						<a class="bds_tsina" data-cmd="tsina"></a>
+						<a class="bds_renren" data-cmd="renren"></a>
+						<a class="bds_weixin" data-cmd="weixin"></a>
+					</div>
+					<script type="text/javascript">
+						window._bd_share_config = {
+							common : {
+								bdPic : ''
+							},
+							share : [{
+								"bdSize" : 32
+							}],
+							slide : [{
+								bdImg : 1,
+								bdPos : "right",
+								bdTop : 100
+							}],
+							selectShare : [{
+								"bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']
+							}]
+						}
+						with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+					</script>
+				</div>
+			</div>
+			<div class="art mt20">
+				<h2 class="art-txt">
+					<em class="iconfont c-f26868">&#xe601;</em>
+					<span>关注我们</span>
+				</h2>
+				<div class="two-code">
+					<img src="{dede:global.cfg_templets_skin/}/img/qrcode_for_jiyi.jpg" alt="扫一扫，关注我们哦">
+					<p class="sao-txt">扫一扫，关注我们哦！</p>
+				</div>
+			</div>
+		</aside>
+	</article>
+</section>
+<!-- end -->
+{dede:include filename="foot.htm"/}
+<script type="text/javascript">
+	$.get("{dede:field name='phpurl'/}/count.php?view=yes&aid={dede:field name='id'/}&mid={dede:field name='mid'/}",function(data){$('.count').html(data)});
+	var href = window.location.href;
+	href = href.substr(0,href.indexOf('html'))+"html";
+	$(".arcurl a").attr('href',href).html(href);
+</script>
+</body>
+</html>

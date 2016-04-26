@@ -1,0 +1,28 @@
+<!-- 头部开始 -->
+<header>
+	<div class="header-box">
+		<a class="logo" href="{dede:global.cfg_basehost/}">
+			<img src="{dede:global.cfg_templets_skin/}/img/logo.png" alt="迹忆博客" />
+		</a>
+		<span class="warning">
+			<img src="{dede:global.cfg_templets_skin/}/img/pic-02.png" alt="迹忆博客" />
+		</span>
+	</div>
+</header>
+<!-- end -->
+<!-- 导航 -->
+<nav class="nav">
+	<ul>
+		<li><a href="{dede:global.cfg_cmsurl/}/">首页</a></li>
+		{dede:channel type='top' row='6' currentstyle="<li class='current'><a href='~typelink~' ~rel~>~typename~</a></li>"}
+		<li><a href='[field:typeurl/]' [field:rel/]>[field:typename/]</a></li>
+		{/dede:channel}
+		<!--<li><a href="learn.html">学无止境</a></li>
+		<li><a href="index.html">趣味杂谈</a></li>
+		<li><a href="zuji.html">足迹</a></li>
+		<li><a href="zuopin.html">作品</a></li>
+		<li><a href="index.html">关于我们</a></li>
+		<li><a href="index.html">留言</a></li>-->
+	</ul>
+</nav>
+<!-- end -->
