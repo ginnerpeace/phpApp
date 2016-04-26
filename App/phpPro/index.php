@@ -69,9 +69,7 @@ if(class_exists($control)){
         }
     }
     if($if){
-		//$class->getMethod($act)->invoke($class->newInstance());
-		$class->getMethod($act)->invoke($class->newInstance());
-        //$class->getMethod($act)->invoke($class->newInstance());
+	$class->getMethod($act)->invoke($class->newInstance());
     }else{
         echo "FUNC NOT FOUND";
     }
